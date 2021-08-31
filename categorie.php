@@ -8,9 +8,15 @@
     <title>Document</title>
 </head>
 <body>
+  <?php require "template/header.php";?>
+  <?php
+    include "functions/function.php";
+
+    $data = getCategory($_GET["idCategory"]);
+  ?>
     <div class="container-fluid h-100 p-5 d-flex flex-column align-items-center" style="background-color: cadetblue;">
-        <h1>Literie</h1>
-        <p>Dans un lit, on s’y blottit, on s’y réchauffe et surtout, on y dort. L’indispensable pour des nuits paisibles ? Le matelas ! En 140x190cm ou en 160x200cm, seule la taille change, pas le confort !</p>
+        <h1><?=$data->name?></h1>
+        <p><?=$data->description?></p>
     </div>
     <div class="row m-2">
         <div class="card col-md-4 d-flex flex-column align-items-center p-5" style="border: 1px solid grey">
@@ -66,7 +72,8 @@
           </div>
     </div>
 
-
+    <?php require "template/footer.php";?>
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -8,6 +8,7 @@
     <title>produit</title>
 </head>
 <body>
+    <?php require "template/header.php";?>
     <div class="row m-5">
         <div class="col-md-6">
             <img src="images/product-media-import-1097090-3-product.jpg" class="img-fluid" alt="">
@@ -34,7 +35,7 @@
         </div>
     </div>
   
-    
+    <?php require "template/footer.php";?>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
