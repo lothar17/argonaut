@@ -5,92 +5,10 @@ function creationPanier ()
     if (!isset ($_SESSION['panier']))
     {
         $_SESSION['panier'] = array();
-        $_SESSION['panier']['produits'] = array();
+        $_SESSION['panier']['Produits'] = array();
+        $_SESSION['panier'] ['quantiteTotale'] = $_SESSION['panier'] ['montantTotal'] = 0;
     }
     return true;
-}
-
-
-
-function ajouterArticle ($idProduit, $qteProduit, $prixProduit) 
-{
-    // si le panier existe
-    if (creationPanier()) 
-    {
-
-        // si le produit existe deja on ajoute seulement la quantité
-        //$positionProduit = array_search($libelleProduit, $_SESSION['panier'] ['libelleProduit']);
-        $_SESSION['panier'] ['quantiteTotale'] += $qteProduit;
-        $_SESSION['panier'] ['montantTotal'] += $qteProduit * $prixProduit;
-        if (isset($_SESSION['panier'] ['Produits'] [$idProduit]))
-        {
-            $_SESSION['panier'] ['produits'] [$idProduit] += $qteProduit;
-        }
-        else
-        {
-            // sinon on ajoute le produit
-            $_SESSION['panier'] ['Produits'] [$idProduit] = array();
-            $_SESSION['panier'] ['Produits'] [$idProduit] ['qteProduit'] = $qteProduit;
-            $_SESSION['panier'] ['Produits'] [$idProduit] ['prixProduit'] = $prixProduit;
-           
-        }
-    }
-    else
-    {
-        echo "Un problème est survenu veuillez contacter l'administrateur du site.";
-    }
-}
-
-
-function supprimerArticle ($idProduit)
-{
-    // si le panier existe
-    if (creationPanier() && !isVerouilleProduit() )
-    {
-        if (isset($_SESSION['panier'] ['Produits'] [$idProduit]))
-        {
-            $_SESSION['panier'] ['quantiteTotale'] -= $_SESSION['panier'] ['Produits'] [$idProduit] ['qteProduit'];
-            $_SESSION['panier'] ['montantTotal'] -= $_SESSION['panier'] ['Produits'] [$idProduit] ['qteProduit'] * $_SESSION['panier'] ['Produits'] [$idProduit] ['prixProduit'];
-            unset ($_SESSION['panier'] ['Produits'] [$idProduit]);
-        }
-        else
-        {
-            echo "Produit non présent dans le panier.";
-        }
-    }
-    else
-    {
-        echo "Un problème est survenu veuillez contacter l'administrateur du site.";
-    }
-
-}
-
-
-function modifierQteArticle ($idProduit, $qteProduit)
-{
-    // si le panier existe
-    if (creationPanier() && !isVerouilleProduit() )
-    {
-        // si la quantité est positive on modifie sinon on supprime l'article
-        if ($qteProduit > 0)
-        {
-            // recherche du produit dans le panier
-            $_SESSION['panier'] ['quantiteTotale'] -= $_SESSION['panier'] ['Produits'] [$idProduit] ['qteProduit'];
-            $_SESSION['panier'] ['montantTotal'] -= $_SESSION['panier'] ['Produits'] [$idProduit] ['qteProduit'] * $_SESSION['panier'] ['Produits'] [$idProduit] ['prixProduit'];
-            $_SESSION['panier'] ['Produits'] [$idProduit] ['qteProduit'] = $qteProduit;
-            $_SESSION['panier'] ['quantiteTotale'] += $qteProduit;
-            $_SESSION['panier'] ['montantTotal'] += $_SESSION['panier'] ['Produits'] [$idProduit] ['qteProduit'] * $_SESSION['panier'] ['Produits'] [$idProduit] ['prixProduit'];
-            
-        }
-        else
-        {
-            supprimerArticle($idProduit);
-        }
-    }
-    else
-    {
-        echo "Un problème est survenu veuillez contacter l'administrateur du site.";
-    }
 }
 
 
@@ -117,9 +35,65 @@ function isVerrouille ()
 }
 
 
-function supprimePanier ()
-{
-    unset ($_SESSION ['panier']);
+function print_r_anbm($array, $type = 1, $title="", $sep="=>", $style="border:blue 1px solid;background-color:#eee;") {
+	switch ($type) {
+		case 1 :
+			print "<pre>";
+				print_r($array);
+			print "</pre>";
+			break;
+		case 2 :
+			print "<pre>";
+				var_dump($array);
+			print "</pre>";
+			break;
+		case 3 :
+			print "<pre>";
+				var_export($array);
+			print "</pre>";
+			break;
+		case 4 :
+			print "<table style='".$style."'>";
+			print "<tr><td><font size=2><b><u>".$title."</u></b></td></tr>";
+			if (isset($array) && count($array) > 0) {
+				foreach($array as $key=>$val)
+				{
+					print "<tr><td><font size=2>".$key." ".$sep."</td><td><font size=2>";
+					if ( is_array($array[$key]) )
+					{
+						print_r_anbm($array[$key], $type, "", $sep, $style);
+						print "</td></tr>";
+					}
+					else
+						print $val."</td></tr>";
+				}
+			}
+			else {
+				print "<tr><td>Que dalle !</td></tr>";
+			}
+			print "</table>";
+			break;
+		case 5 :
+			br();
+			if (isset($array) && count($array) > 0) {
+				print " [";
+				foreach($array as $key=>$val) {
+					print '"'.$key.'"'.$sep;
+					if ( is_array($array[$key]) ) {
+						//print " Array [";
+						print_r_anbm($array[$key], 5, "", $sep);
+						print "<br>";
+					}
+					else
+						print '"'.$val.'",&nbsp;';
+				}
+				print "],";
+			}
+			else {
+				print "Que dalle !";
+			}
+			break;
+		}
 }
 
 

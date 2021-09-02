@@ -48,3 +48,14 @@ function change() {
         indic = 0;
     }
 }
+
+function add( nom ) { 
+    document.getElementById( nom ).value++; 
+    } 
+
+function substract( nom ) { 
+    if ( document.getElementById( nom ).value > 0 )
+    document.getElementById( nom ).value--; 
+    } 
+        
+        
