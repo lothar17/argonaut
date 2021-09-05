@@ -1,4 +1,4 @@
-.card{
+.card-category{
     border: 0px;
 }
 
@@ -6,3 +6,62 @@
     text-decoration: none;
 }
 
+
+#bandeau{
+    background-color: rgb(240, 240, 240);
+}
+
+
+
+.rating {
+    margin-left: 37%
+}
+
+.page {
+    background-color: #dfe6e0;
+    
+}
+
+.fa {
+    color: #f2dd1d
+}
+
+.card-img-top {
+    width: 90%;
+    height: 225px
+}
+
+.view {
+    background-color: #dfe6e0;
+    padding: 10px;
+    margin: 20px
+}
+
+.card {
+    width: 95%;
+    padding: 0px;
+    
+}
+
+.card-footer {
+    background-color: #ff772e;
+    font-weight: 700
+}
+
+.price {
+    color: #ff4517;
+    font-weight: 600
+}
+
+.row {
+    margin: 0;
+}
+
+.small-name {
+    color: rgb(5, 39, 73);
+    
+}
+
+.home-cards-container {
+    margin-bottom: 40px;
+}

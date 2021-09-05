@@ -47,7 +47,7 @@
                 
         ?>
     
-        <div class="products card col-md-4 d-flex flex-column align-items-center p-5" style="border: 1px solid grey">
+        <div class="products card-category col-md-4 d-flex flex-column align-items-center p-5" style="border: 1px solid grey">
             <img class="card-img-top img-fluid" src="<?=getUrlImageIfExist($produit[$j])?>" alt="Card image cap">
             <div class="card-body">
                <div class="d-flex justify-content-center">

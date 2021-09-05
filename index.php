@@ -18,7 +18,10 @@
     creationPanier();
     
     ?>
+
+    <a href="create_produit.php"> lien</a>
         <div class="row m-5">
+        
           <?php
             require_once "functions/function.php";
 
@@ -28,7 +31,7 @@
             while ($i < $nbCategory) {                                             
           ?>
 
-          <div class="col-md-12 d-flex flex-column align-items-center bg-primary">
+          <div class="col-md-12 d-flex flex-column align-items-center" id="bandeau">
             <div class="card-body">
               <div class="d-flex justify-content-center text-warning">
                 <h1 class="card-title font-weight-bold"><?=$data[$i]->name?></h1>
@@ -38,7 +41,7 @@
             </div>
           </div>
          
-        <div class="row">
+        <div class="row home-cards-container">
 
           <?php
             $idCategory = $data[$i]->id;  
@@ -47,7 +50,7 @@
             $j = 0;
             while ($j < $nbProduit) { 
           ?>
-            <div class="card col-md-4 d-flex flex-column align-items-center p-5">
+             <!-- <div class="card col-md-4 d-flex flex-column align-items-center p-5">
               <div class="p-2" style="border: 1px solid grey">
                 <img class="card-img-top img-fluid" src="<?= getUrlImageIfExist($produit[$j])?>" alt="Card image cap">
                 <div class="card-body">
@@ -56,8 +59,31 @@
                   <a href="produit.php?idProduit=<?=$produit[$j]->id_produit?>" class="btn btn-primary">En savoir plus</a>
                 </div>
               </div>
-            </div>
-    
+            </div>  -->
+                
+            <!--For Row containing all card-->
+                          
+                <div class="col-md-4 d-flex flex-column align-items-center p-2 page">
+                  <div class="card card-cascade card-ecommerce wider shadow m-2 ">
+                  <!--Card image-->
+                    <div class="view view-cascade overlay text-center img-fluid"> <img class="card-img-top" src="<?= getUrlImageIfExist($produit[$j])?>" alt=""> 
+                      <a><div class="mask rgba-white-slight"></div></a>
+                    </div>
+                    <!--Card Body-->
+                    <div class="card-body card-body-cascade text-center">
+                    <!--Card Title-->
+                      <h4 class="card-title small-name"><strong><?=$produit[$j]->small_name?></strong></h4> <!-- Card Description-->                   
+                      <p class="price"><strong><?=$produit[$j]->prix?> € !</strong></p> <!-- Card Rating-->      
+                      <!--Card footer-->
+                      <div class="card-footer bg-warning">
+                        <a href="produit.php?idProduit=<?=$produit[$j]->id_produit?>">En savoir plus</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+            
+
           <?php
           $j++;
             }
