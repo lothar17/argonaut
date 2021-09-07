@@ -2,6 +2,7 @@
 session_start();
 require_once "functions/function.php";
 ?>
+
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-md-5">
     <img src="images/a.jpg" width="45" height="45" alt="">
@@ -69,7 +70,8 @@ require_once "functions/function.php";
             <i class="fa fa-cog fa-lg"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="login.php">Mon compte</a>
+            <a class="dropdown-item" href="login.php">Connection</a>
+            <a class="dropdown-item" href="logout.php">Déconnexion</a>
           </div>
         </li>
       </ul>

@@ -62,7 +62,7 @@
   
     <?php
     //unset ($_SESSION ['panier']);
-    //print_r_anbm($_SESSION ['panier']);
+    
     ?>
  
   

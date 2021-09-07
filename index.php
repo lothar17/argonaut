@@ -10,16 +10,15 @@
     
     <title>Bienvenue sur Argonaut.fr</title>
 </head>
-    <body>
-    <?php 
+<body>
+
+  <?php 
     require "template/header.php";
     require_once "functions/function_panier.php"; 
     //unset ($_SESSION ['panier']); 
-    creationPanier();
-    
-    ?>
+    creationPanier();    
+  ?>
 
-    <a href="create_produit.php"> lien</a>
         <div class="row m-5">
         
           <?php
@@ -41,7 +40,7 @@
             </div>
           </div>
          
-        <div class="row home-cards-container">
+          <div class="row home-cards-container">
 
           <?php
             $idCategory = $data[$i]->id;  
@@ -49,57 +48,42 @@
             $nbProduit = count($produit);          
             $j = 0;
             while ($j < $nbProduit) { 
-          ?>
-             <!-- <div class="card col-md-4 d-flex flex-column align-items-center p-5">
-              <div class="p-2" style="border: 1px solid grey">
-                <img class="card-img-top img-fluid" src="<?= getUrlImageIfExist($produit[$j])?>" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title"><?=$produit[$j]->name?></h5>
-                  <h3 class="card-text font-weight-bold text-danger">Prix <?=$produit[$j]->prix?> € !</h3>
-                  <a href="produit.php?idProduit=<?=$produit[$j]->id_produit?>" class="btn btn-primary">En savoir plus</a>
-                </div>
-              </div>
-            </div>  -->
-                
-            <!--For Row containing all card-->
+          ?>           
                           
-                <div class="col-md-4 d-flex flex-column align-items-center p-2 page">
-                  <div class="card card-cascade card-ecommerce wider shadow m-2 ">
-                  <!--Card image-->
-                    <div class="view view-cascade overlay text-center img-fluid"> <img class="card-img-top" src="<?= getUrlImageIfExist($produit[$j])?>" alt=""> 
-                      <a><div class="mask rgba-white-slight"></div></a>
-                    </div>
-                    <!--Card Body-->
-                    <div class="card-body card-body-cascade text-center">
-                    <!--Card Title-->
-                      <h4 class="card-title small-name"><strong><?=$produit[$j]->small_name?></strong></h4> <!-- Card Description-->                   
-                      <p class="price"><strong><?=$produit[$j]->prix?> € !</strong></p> <!-- Card Rating-->      
-                      <!--Card footer-->
-                      <div class="card-footer bg-warning">
-                        <a href="produit.php?idProduit=<?=$produit[$j]->id_produit?>">En savoir plus</a>
-                      </div>
-                    </div>
+            <div class="col-md-4 d-flex flex-column align-items-center p-2 page">
+              <div class="card card-cascade card-ecommerce wider shadow m-2 ">
+              <!--Card image-->
+                <div class="view view-cascade overlay text-center img-fluid"> <img class="card-img-top" src="<?= getUrlImageIfExist($produit[$j])?>" alt=""> 
+                  <a><div class="mask rgba-white-slight"></div></a>
+                </div>
+                <!--Card Body-->
+                <div class="card-body card-body-cascade text-center">
+                <!--Card Title-->
+                  <h4 class="card-title small-name"><strong><?=$produit[$j]->small_name?></strong></h4> <!-- Card Description-->                   
+                  <p class="price"><strong><?=$produit[$j]->prix?> € !</strong></p> <!-- Card Rating-->      
+                  <!--Card footer-->
+                  <div class="card-footer bg-warning">
+                    <a href="produit.php?idProduit=<?=$produit[$j]->id_produit?>">En savoir plus</a>
                   </div>
                 </div>
+              </div>
+            </div>
               
-            
+            <?php
+            $j++;
+              }
+            ?>
 
-          <?php
-          $j++;
-            }
-          ?>
-
-        </div> 
+          </div> 
 
           <?php
           $i++;
             } 
           ?>
-
            
-          </div>
-          
-        </div>     
+          </div>          
+        </div>
+             
         <?php require "template/footer.php";?>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

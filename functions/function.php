@@ -37,9 +37,11 @@ function getCategory($id_category) {
     return $req->fetch();
 }
 
-function getProductFromCategoryInCategorie($id_category) {
+function getProductFromCategoryInCategorie($id_category, $orderBy) {
     require "conn.php";
-    $req = $db->prepare("SELECT * FROM `produits` WHERE id_category = $id_category order by `prix` DESC");
+    $ordre = ($orderBy != '') ? $orderBy:'prix DESC';
+    $req = $db->prepare("SELECT * FROM `produits` WHERE id_category = $id_category order by ".$ordre);
+
     $req->execute();
     return $req->fetchAll();
 }
@@ -122,7 +124,6 @@ function login($email_clean, $password_clean)
         }
     }
 }
-
 
 
 

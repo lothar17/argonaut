@@ -12,16 +12,26 @@
     <script src="functions/tri.js"></script>
 </head>
 <body>
-    <?php require "template/header.php";?>
-    <?php
+    <?php 
+        require "template/header.php";   
         require_once "functions/function.php";
         require_once "functions/function_panier.php";
         $idProduit = $_GET["idProduit"];
         $ProduitData = getProduit($idProduit);
     ?>
+    
     <div class="row m-5">
         <div class="col-md-6">
             <img src="<?=getUrlImageIfExist($ProduitData)?>" class="img-fluid" alt="">
+            <div class="container-fluid p-4 font-weight-bold mt-5">
+                <h4 class="p-2">Expédition et retours</h4>
+                <p>Livraison en magasin 0 €
+                    <span class="text-danger">(Offerte)</span></p>
+                    <p>Livraison à domicile Colissimo
+                        3,99€ <span class="text-danger">(Offerte dès 59€)</span></p>
+                        <p>Livraison en point relais
+                            2,99€ <span class="text-danger">(Offerte dès 59€)</span></p>
+            </div>
         </div>
         <div class="col-md-6 d-flex flex-column align-items-center">
             <div class="container-fluid p-4" style="border-bottom: 1px solid grey">
@@ -32,33 +42,18 @@
                 <h4 class="p-2">Description</h4>
                 <p><?=$ProduitData->description?></p>
             </div>
-            <div class="container-fluid p-4 font-weight-bold" style="border-bottom: 1px solid grey">
-                <h4 class="p-2">Expédition et retours</h4>
-                <p>Livraison en magasin 0 €
-                    <span class="text-danger">(Offerte)</span></p>
-                    <p>Livraison à domicile Colissimo
-                        3,99€ <span class="text-danger">(Offerte dès 59€)</span></p>
-                        <p>Livraison en point relais
-                            2,99€ <span class="text-danger">(Offerte dès 59€)</span></p>
-            </div>
-            <form action="functions/action.panier.php?cas=ajouterArticle&id=<?=$idProduit?>&price=<?=$ProduitData->prix?>" method="post">
-                <input type="text" name="quantite" value="1" id="quantite" size="2" maxlength="4"> 
-                <button type="button" onClick="add('quantite');">plus</button> 
-                <button type="button" onClick="substract('quantite');">moins</button> 
-           
-
-            
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Ajouter au panier</button>  
-            </form>
+            <div class="p-4 row">
+                <form action="functions/action.panier.php?cas=ajouterArticle&id=<?=$idProduit?>&price=<?=$ProduitData->prix?>" method="post">
+                    <input type="text" name="quantite" value="1" id="quantite" size="2" maxlength="4"> 
+                    <button type="button" onClick="add('quantite');"><i class="fa fa-plus" aria-hidden="true"></i></button> 
+                    <button type="button" onClick="substract('quantite');"><i class="fa fa-minus" aria-hidden="true"></i></button>  
+                    <button type="submit" class="btn btn-primary btn-lg btn-block mt-2">Ajouter au panier</button>  
+                </form>
+            </div>    
         </div>
-    </div>
-    <?php
-    //unset ($_SESSION ['panier']);
-   print_r ($_SESSION ['panier']);
-    ?>
-    <?php require "template/footer.php";
-    
-    ?>
+    </div> 
+
+    <?php require "template/footer.php";?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -22,7 +22,7 @@
 </head>
 <body style="background-color: rgb(226, 226, 226);">
   <?php require "template/header.php";?>
-  <div class="container bg-light col-md-5 mt-5 p-5">
+  <div class="container bg-light col-md-5 mt-5 mb-5 p-5">
         <div class="d-flex flex-column justify-content-center align-items-center">
           
             <form method="POST">
@@ -32,23 +32,23 @@
                   </a>     
               </h2>
 
-              <div class="form-group row col-md-12">
+              <div class="form-group row col-md-12 p-2">
                   
                   <input type="name" name="pseudo" class="form-control" id="exampleInputFirst_name1" placeholder="Pseudo">
                 </div>
               
-                <div class="form-group row col-md-12">
+                <div class="form-group row col-md-12 p-2">
                   <!-- <label for="exampleInputEmail1" class="font-weight-bold">Déja client ?</label> -->
                   <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
                 </div>
-                <div class="form-group row col-md-12">
+                <div class="form-group row col-md-12 p-2">
                   
                   <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
               </div>                
                 
             
-              <div class="form-group d-flex flex-column justify-content-center align-items-center col-md-12">
-                <input class="btn btn-success" type="submit" name="valider" value="S'inscire" />
+              <div class="form-group d-flex flex-column justify-content-center align-items-center col-md-12 p-2">
+                <input class="btn btn-success" type="submit" name="valider" value="S'inscrire" />
                 <label for="exampleInputEmail1" class="font-weight-bold">Déja client ?</label>
                 <button type="submit" class="btn btn-success"><a id="links" href="login.php">Se connecter</a></button>
               </div> 
